@@ -1,134 +1,146 @@
 <!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
-	<head>
-		<title>J. Grant Fine Art</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<head>
+    <title>J. Grant Fine Art</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <style>
+        /* Carousel sizing + visual tweaks */
+        .featured-swiper { 
+            max-width:1200px; 
+            margin:2rem auto;
+        }
+        .featured-swiper .swiper-slide img { 
+            width:100%; 
+            height:auto; 
+            border-radius:6px; 
+            display:block; 
+        }
+        .featured-swiper .swiper-button-next, .featured-swiper .swiper-button-prev { 
+            color:#111; 
+            z-index:10; 
+        }
+        #intro .content { max-width:960px; margin:2rem auto; padding:1rem; text-align:left; }
+        #intro h1 { margin:0 0 .25rem 0; font-size:2rem; }
+        #intro p.lead { margin:0 0 .75rem 0; color:#444; }
+        .substack-icon img { display:inline-block; margin-left:0.25rem; vertical-align:middle; }
+    </style>
+</head>
+<body class="is-preload">
 
-		<!-- Wrapper -->
-		<div id="wrapper">
+<div id="wrapper">
 
-			<!-- Main -->
-			<div id="main">
-				<div class="inner">
+    <div id="main">
+        <div class="inner">
 
-					<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo"><strong>J. Grant</strong> Fine Art</a>
-						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
-						</ul>
-					</header>
+<!-- Header -->
+<header id="header">
+    <a href="index.html" class="logo"><strong>J. Grant</strong> Fine Art</a>
+    <ul class="icons">
+        <li>
+            <a href="https://www.instagram.com/jgrant_fineart" class="icon brands fa-instagram" target="_blank">
+                <span class="label">Instagram</span>
+            </a>
+        </li>
+        <li>
+            <a href="mailto:jgrantfineart@gmail.com" class="icon solid fa-envelope">
+                <span class="label">Email</span>
+            </a>
+        </li>
+    </ul>
+</header>
 
-					<!-- Banner -->
-					<section id="banner">
-						<div class="content">
-							<header>
-								<h1>J. Grant Fine Art</h1>
-								<p>Original Artwork and Prints</p>
-							</header>
-							<p>Welcome to my online portfolio. Browse through selected works below.</p>
-						</div>
-					</section>
+<!-- Intro Section -->
+<section id="intro" style="padding:1rem 0 0.5rem 0;">
+    <div class="content" style="text-align:left; max-width:960px; margin:0; padding:0 1rem;">
+        <h1 style="margin:0 0 0.5rem 0; font-size:2rem;">Welcome! I'm J. Grant Merrill</h1>
+        <p style="margin:0 0 0.75rem 0; color:#444; font-size:1.1rem;">
+            A Kansas City-based artist specializing in classical landscapes and portraiture.
+        </p>
+        <p style="margin:0 0 0.75rem 0; font-size:1.05rem;">
+            Explore a few of my recent pieces below or head to my gallery page to see more examples of my work. If you would like to keep up with my latest work and the things that inspire me, please consider subscribing to my newsletter.
+        </p>
+        <p style="margin:0 0 0.75rem 0; font-size:1.05rem;">
+            Some of my available work can be found in my online shop. Please contact me if you have questions about availability or commissions.
+        </p>
+    </div>
+</section>
+            <!-- Featured Carousel -->
+            <section id="featured" class="featured-swiper" aria-label="Featured artwork carousel">
+                <div class="swiper mySwiperMain" aria-live="polite">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><a href="images/FullsizeMerrill-ReturnFromGodwinHill.jpg" target="_blank"><img src="images/FullsizeMerrill-ReturnFromGodwinHill.jpg" alt="Return From Godwin Hill" /></a></div>
+                        <div class="swiper-slide"><a href="images/Alden2024Full.jpg" target="_blank"><img src="images/Alden2024Full.jpg" alt="Alden 2024" /></a></div>
+                        <div class="swiper-slide"><a href="images/archesfull.jpg" target="_blank"><img src="images/archesfull.jpg" alt="Arches" /></a></div>
+                        <div class="swiper-slide"><a href="images/Merrill-AstheStormBreaks.jpg" target="_blank"><img src="images/Merrill-AstheStormBreaks.jpg" alt="As the Storm Breaks" /></a></div>
+                        <div class="swiper-slide"><a href="images/Morning Mist at Stoll Memorial Park.jpg" target="_blank"><img src="images/Morning Mist at Stoll Memorial Park.jpg" alt="Morning Mist at Stoll Memorial Park" /></a></div>
+                        <div class="swiper-slide"><a href="images/Kelly and Leland 2023.jpg" target="_blank"><img src="images/Kelly and Leland 2023.jpg" alt="Kelly and Leland 2023" /></a></div>
+                    </div>
+                    <div class="swiper-button-next" aria-label="Next slide"></div>
+                    <div class="swiper-button-prev" aria-label="Previous slide"></div>
+                    <div class="swiper-pagination" aria-label="Featured slides pagination"></div>
+                </div>
+            </section>
 
-					<!-- Gallery Section -->
-					<section>
-						<header class="major">
-							<h2>Selected Works</h2>
-						</header>
-						<div class="posts">
-							<!-- Gallery Articles Start -->
-							<article><a href="#" class="image"><img src="images/1.jpg" alt="1" /></a><h3>1</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/10.jpg" alt="10" /></a><h3>10</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/10mbgodwinhill.jpg" alt="10mbgodwinhill" /></a><h3>10mbgodwinhill</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/10mpcygne.jpg" alt="10mpcygne" /></a><h3>10mpcygne</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/10mpgentledivide.jpg" alt="10mpgentledivide" /></a><h3>10mpgentledivide</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/10mpKelly and Leland 2023.jpg" alt="10mpKelly and Leland 2023" /></a><h3>10mpKelly and Leland 2023</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/11.jpg" alt="11" /></a><h3>11</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/12.jpg" alt="12" /></a><h3>12</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/13.jpg" alt="13" /></a><h3>13</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/14.jpg" alt="14" /></a><h3>14</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/15.jpg" alt="15" /></a><h3>15</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/16.jpg" alt="16" /></a><h3>16</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/17.jpg" alt="17" /></a><h3>17</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/18.jpg" alt="18" /></a><h3>18</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/19.jpg" alt="19" /></a><h3>19</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/2.jpg" alt="2" /></a><h3>2</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/20.jpg" alt="20" /></a><h3>20</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/21.jpg" alt="21" /></a><h3>21</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/22.jpg" alt="22" /></a><h3>22</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/23.jpg" alt="23" /></a><h3>23</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/24.jpg" alt="24" /></a><h3>24</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/25.jpg" alt="25" /></a><h3>25</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/26.jpg" alt="26" /></a><h3>26</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/27.jpg" alt="27" /></a><h3>27</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/28.jpg" alt="28" /></a><h3>28</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/29.jpg" alt="29" /></a><h3>29</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/3.jpg" alt="3" /></a><h3>3</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/30.jpg" alt="30" /></a><h3>30</h3><p>Medium / Year</p></article>
-							<article><a href="#" class="image"><img src="images/31.jpg" alt="31" /></a><h3>31</h3><p>Medium / Year</p></article>
-							<!-- Add the remaining images in the same structure -->
-							<!-- You can continue pasting or I can generate a full copy for all 77+ images if you want -->
-						</div>
-					</section>
+            <section style="text-align:center; margin:1.5rem 0 3rem;">
+                <div class="content">
+                    <p style="font-size:1.05rem; margin-bottom:.75rem;">Want to see the full collection?</p>
+                    <a href="gallery.html" class="button big" style="text-decoration:none;">Visit Full Gallery</a>
+                </div>
+            </section>
 
-				</div>
-			</div>
+        </div>
+    </div>
 
-			<!-- Sidebar -->
-			<div id="sidebar">
-				<div class="inner">
+    <div id="sidebar">
+        <div class="inner">
 
-					<!-- Menu -->
-					<nav id="menu">
-						<header class="major">
-							<h2>Menu</h2>
-						</header>
-						<ul>
-							<li><a href="index.html">Homepage</a></li>
-							<li><a href="#">About</a></li>
-							<li><a href="#">Contact</a></li>
-						</ul>
-					</nav>
+            <nav id="menu">
+                <header class="major"><h2>Menu</h2></header>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="https://jgrantfineart.substack.com/?utm_campaign=profile_chips" target="_blank">Newsletter</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
 
-					<!-- Get in touch -->
-					<section>
-						<header class="major">
-							<h2>Get in touch</h2>
-						</header>
-						<p>Email me for commissions or inquiries.</p>
-						<ul class="contact">
-							<li class="icon solid fa-envelope"><a href="mailto:info@jgrantfineart.com">info@jgrantfineart.com</a></li>
-						</ul>
-					</section>
+            <section>
+                <header class="major"><h2>Get in touch</h2></header>
+                <p>Email me for commissions or inquiries.</p>
+                <ul class="contact">
+                    <li class="icon solid fa-envelope"><a href="mailto:info@jgrantfineart.com">info@jgrantfineart.com</a></li>
+                </ul>
+            </section>
 
-					<!-- Footer -->
-					<footer id="footer">
-						<p class="copyright">&copy; J. Grant Fine Art. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-					</footer>
+            <footer id="footer">
+                <p class="copyright">&copy; J. Grant Fine Art. All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+            </footer>
 
-				</div>
-			</div>
+        </div>
+    </div>
 
-		</div>
+</div>
 
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+    const mainSwiper = new Swiper(".mySwiperMain", {
+        loop: true,
+        navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+        pagination: { el: ".swiper-pagination", clickable: true },
+        autoplay: { delay: 4500, disableOnInteraction: false },
+        speed: 700
+    });
+</script>
 
-	</body>
+</body>
 </html>
