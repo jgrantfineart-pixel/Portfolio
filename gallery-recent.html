@@ -6,18 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <style>
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
+        /* --- Gallery-Specific Styles with Masonry Look (Uncropped) --- */
+        
+        /* Container for the Masonry Columns */
+        #recent-gallery {
+            /* Remove standard grid properties */
+            display: block; 
             margin-top: 2rem;
+            padding: 2rem 0;
+
+            /* KEY FIX 1: Set up CSS Columns for Masonry effect */
+            column-count: 3; /* Default to 3 columns on large screens */
+            column-gap: 20px; /* Space between columns */
         }
-        .gallery-grid img {
+        
+        /* Media Queries for Responsiveness (adjust column count for smaller screens) */
+        @media screen and (max-width: 1200px) {
+            #recent-gallery { column-count: 2; }
+        }
+        @media screen and (max-width: 736px) {
+            #recent-gallery { column-count: 1; column-gap: 0; }
+        }
+        
+        /* Styling for individual gallery items */
+        .gallery-item {
+            /* KEY FIX 2: Ensure the item stays together inside the column */
+            display: inline-block;
             width: 100%;
-            height: auto;
+            
+            /* Add some bottom margin for spacing between items within a column */
+            margin-bottom: 20px; 
+            
+            overflow: hidden;
             border-radius: 6px;
-            display: block;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
         }
+
+        .gallery-item:hover {
+            transform: scale(1.02); /* Slightly gentler hover effect */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            /* KEY FIX 3: Images keep their aspect ratio */
+            width: 100%;
+            height: auto; 
+            display: block;
+            border-radius: 6px; /* Match container border-radius */
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Ensure header styling is consistent */
+        #header ul.icons { margin: 0; }
+        #header .icons li { padding-left: 1em; }
     </style>
 </head>
 <body class="is-preload">
@@ -29,27 +72,28 @@
 
             <header id="header">
                 <a href="index.html" class="logo"><strong>J. Grant</strong> Fine Art</a>
+                <ul class="icons">
+                    <li>
+                        <a href="https://www.instagram.com/jgrant_fineart" class="icon brands fa-instagram" target="_blank">
+                            <span class="label">Instagram</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:jgrantfineart@gmail.com" class="icon solid fa-envelope">
+                            <span class="label">Email</span>
+                        </a>
+                    </li>
+                </ul>
             </header>
 
             <section>
                 <header class="major">
                     <h2>Recent Work</h2>
+                    <p>A selection of my latest pieces. Click any image to view full size.</p>
                 </header>
 
-                <div class="gallery-grid">
-                    <img src="images/1.jpg" alt="1">
-                    <img src="images/10mpcygne.jpg" alt="10mpcygne">
-                    <img src="images/11.jpg" alt="11">
-                    <img src="images/16.jpg" alt="16">
-                    <img src="images/31.jpg" alt="31">
-                    <img src="images/36.jpg" alt="36">
-                    <img src="images/archesfull.jpg" alt="archesfull">
-                    <img src="images/Merrill-AstheStormBreaks.jpg" alt="As the Storm Breaks">
-                    <img src="images/Merrill-ReturnFromGodwinHill.jpg" alt="Return From Godwin Hill">
-                    <img src="images/Morning Mist at Stoll Memorial Park.jpg" alt="Morning Mist at Stoll Memorial Park">
-                    <img src="images/PuetoRicoUntitled.jpg" alt="PuetoRico Untitled">
-                    <img src="images/Sparrow.jpg" alt="Sparrow">
-                </div>
+                <div id="recent-gallery" aria-label="Recent artwork grid">
+                    </div>
             </section>
 
         </div>
@@ -63,14 +107,27 @@
                     <h2>Menu</h2>
                 </header>
                 <ul>
-                   <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="https://jgrantfineart.substack.com/?utm_campaign=profile_chips" target="_blank">Newsletter</a></li>
-                    <li><a href="cv.html">CV</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="cv.html">CV</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li><a href="https://jgrantfineart.square.site/shop/original-art/HX7HKUXSE4ZA47RJKRRKUZX6" target="_blank">Shop</a></li>
+                    <li><a href="https://jgrantfineart.substack.com/?utm_campaign=profile_chips" target="_blank">Newsletter</a></li>
                 </ul>
             </nav>
+
+            <section>
+                <header class="major"><h2>Get in touch</h2></header>
+                <p>Email me for commissions or inquiries.</p>
+                <ul class="contact">
+                    <li class="icon solid fa-envelope"><a href="mailto:jgrantfineart@gmail.com">jgrantfineart@gmail.com</a></li>
+                </ul>
+            </section>
+
+            <footer id="footer">
+                <p class="copyright">&copy; J. Grant Fine Art. All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+            </footer>
 
         </div>
     </div>
@@ -82,6 +139,38 @@
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
+
+<script src="images/Recent-Work/recent_work.js"></script>
+
+<script>
+// Load recent work images dynamically into the gallery grid
+
+// Check if the 'recentImages' array was successfully loaded
+const images = typeof recentImages !== 'undefined' ? recentImages : [];
+
+const gallery = document.getElementById("recent-gallery");
+const imageFolder = "images/Recent-Work";
+
+if (Array.isArray(images) && images.length > 0) {
+    images.forEach(img => {
+        const item = document.createElement("div");
+        item.className = "gallery-item";
+        
+        // Create clean alt text
+        const altText = img.replace(/[-_]/g, ' ').replace(/\.\w+$/, '');
+        
+        // Construct the HTML for the image link/container
+        item.innerHTML = `
+            <a href="${imageFolder}/${img}" target="_blank" title="View ${altText} full size">
+                <img src="${imageFolder}/${img}" alt="${altText}" loading="lazy" style="height: auto;" />
+            </a>
+        `;
+        gallery.appendChild(item);
+    });
+} else {
+    gallery.innerHTML = '<p>No recent work images found to display in the gallery.</p>';
+}
+</script>
 
 </body>
 </html>

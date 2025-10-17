@@ -3,21 +3,48 @@
 <head>
     <title>Portrait Gallery — J. Grant Fine Art</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <style>
-        .gallery-grid {
+        /* --- Gallery-Specific Styles --- */
+        
+        /* Grid Layout for the Gallery */
+        #gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 2rem 0;
         }
-        .gallery-grid img {
+
+        /* Styling for individual gallery items */
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
             width: 100%;
             height: auto;
-            border-radius: 6px;
             display: block;
+            transition: opacity 0.3s ease;
         }
+        
+        /* Intro styling */
+        #intro .content { 
+            max-width:960px; 
+            margin:0; /* Adjusted to blend with main layout */
+            padding:1rem 0 0.5rem 0; 
+            text-align:left; 
+        }
+        #intro h1 { margin:0 0 .25rem 0; font-size:2rem; }
     </style>
 </head>
 <body class="is-preload">
@@ -29,45 +56,60 @@
 
             <header id="header">
                 <a href="index.html" class="logo"><strong>J. Grant</strong> Fine Art</a>
+                <ul class="icons">
+                    <li>
+                        <a href="https://www.instagram.com/jgrant_fineart" class="icon brands fa-instagram" target="_blank">
+                            <span class="label">Instagram</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:jgrantfineart@gmail.com" class="icon solid fa-envelope">
+                            <span class="label">Email</span>
+                        </a>
+                    </li>
+                </ul>
             </header>
 
-            <section>
-                <header class="major">
-                    <h2>Portrait Gallery</h2>
-                </header>
-
-                <div class="gallery-grid">
-                    <img src="images/10mpKelly and Leland 2023.jpg" alt="Kelly and Leland 2023">
-                    <img src="images/Alden2024Full.jpg" alt="Alden 2024">
-                    <img src="images/Katrina10.jpg" alt="Katrina10">
-                    <img src="images/Mother'sEmbrace10mp.jpg" alt="Mother's Embrace">
-                    <img src="images/Sarah10MB.jpg" alt="Sarah10MB">
+            <section id="intro">
+                <div class="content">
+                    <h1>Portrait Gallery</h1>
+                    <p>Explore the portraits in my collection below. Click any image to view full size.</p>
                 </div>
             </section>
+
+            <section id="gallery" aria-label="Portrait artwork grid"></section>
 
         </div>
     </div>
 
     <div id="sidebar">
         <div class="inner">
-
             <nav id="menu">
-                <header class="major">
-                    <h2>Menu</h2>
-                </header>
+                <header class="major"><h2>Menu</h2></header>
                 <ul>
-                 <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="https://jgrantfineart.substack.com/?utm_campaign=profile_chips" target="_blank">Newsletter</a></li>
-                    <li><a href="cv.html">CV</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="cv.html">CV</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li><a href="https://jgrantfineart.square.site/shop/original-art/HX7HKUXSE4ZA47RJKRRKUZX6" target="_blank">Shop</a></li>
+                    <li><a href="https://jgrantfineart.substack.com/?utm_campaign=profile_chips" target="_blank">Newsletter</a></li>
                 </ul>
             </nav>
 
+            <section>
+                <header class="major"><h2>Get in touch</h2></header>
+                <p>Email me for commissions or inquiries.</p>
+                <ul class="contact">
+                    <li class="icon solid fa-envelope"><a href="mailto:jgrantfineart@gmail.com">jgrantfineart@gmail.com</a></li>
+                </ul>
+            </section>
+
+            <footer id="footer">
+                <p class="copyright">&copy; J. Grant Fine Art. All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+            </footer>
         </div>
     </div>
-
 </div>
 
 <script src="assets/js/jquery.min.js"></script>
@@ -75,6 +117,39 @@
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
+
+<script src="images/Portraits/portrait_images.js"></script>
+
+<script>
+// Load portrait images dynamically into the gallery grid
+
+// The 'portraitImages' array is defined in the included portrait_images.js file
+const images = typeof portraitImages !== 'undefined' ? portraitImages : [];
+
+const gallery = document.getElementById("gallery");
+
+// Ensure the array has images before proceeding
+if (Array.isArray(images) && images.length > 0) {
+    images.forEach(img => {
+        const item = document.createElement("div");
+        item.className = "gallery-item";
+        
+        // Create clean alt text by removing file extension and replacing hyphens/underscores with spaces
+        const altText = img.replace(/[-_]/g, ' ').replace(/\.\w+$/, '');
+        
+        // Construct the HTML for the image link
+        item.innerHTML = `
+            <a href="images/Portraits/${img}" target="_blank" title="View ${altText} full size">
+                <img src="images/Portraits/${img}" alt="${altText}" loading="lazy" />
+            </a>
+        `;
+        gallery.appendChild(item);
+    });
+} else {
+    // Display a message if no images are found or the script failed to load
+    gallery.innerHTML = '<p>No portrait images found to display in the gallery or the image list file is missing.</p>';
+}
+</script>
 
 </body>
 </html>

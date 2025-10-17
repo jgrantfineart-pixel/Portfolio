@@ -1,0 +1,16 @@
+const recentImages = [
+    "20251017092814-pxl-20250918-185319069raw-01mp-2-llxfqc.jpg",
+    "20251017092815-at-the-water-s-edge-rywtzr.jpg",
+    "20251017092831-dust-and-tallgrass-full-yf4rzd.jpg",
+    "20251017092834-8-nfgvzh.jpg",
+    "20251017092843-img20250821-09433212-xix5hx.png",
+    "20251017092857-fisherman-sunrise-85-res-1-nzyemo.jpg",
+    "20251017092857-pc186858-1-czrgql.jpg",
+    "20251017092904-morning-mist-at-stoll-memorial-park-tlkgyt.jpg",
+    "20251017092912-pxl-20250508-215016233-2-hljwoh.jpg",
+    "20251017092917-3-pgrt1w.jpg",
+    "20251017092922-pxl-20251009-191234464-qil5dz.jpg",
+    "20251017092954-banjo-player-k7u1qn.jpg",
+    "20251017092959-img20250507-12233704-qnimm0.jpg",
+    "20251017093020-p3281154-ts6kx3.jpg",
+];
