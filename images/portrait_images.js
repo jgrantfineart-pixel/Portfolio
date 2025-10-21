@@ -1,0 +1,79 @@
+const portraitImages = [
+    {
+        "thumb_image": "images/Portraits/leland.jpg",
+        "full_image": "images/Full-Gallery/leland.jpg",
+        "alt_text": "leland",
+        "title": "Leland",
+        "artist": "J. Grant Merrill",
+        "medium": "Pastel",
+        "width": "12.0",
+        "height": "16.0",
+        "date_created": "2024-12-01"
+    },
+    {
+        "thumb_image": "images/Portraits/mothers_embrace.jpg",
+        "full_image": "images/Full-Gallery/mothers_embrace.jpg",
+        "alt_text": "mothers_embrace",
+        "title": "Mother's Embrace",
+        "artist": "J. Grant Merrill",
+        "medium": "Oil",
+        "width": "16.0",
+        "height": "12.0",
+        "date_created": "2025-05-01"
+    },
+    {
+        "thumb_image": "images/Portraits/portrait_of_claire.jpg",
+        "full_image": "images/Full-Gallery/portrait_of_claire.jpg",
+        "alt_text": "portrait_of_claire",
+        "title": "Portrait of Claire",
+        "artist": "J. Grant Merrill",
+        "medium": "Pastel",
+        "width": "11.0",
+        "height": "14.0",
+        "date_created": "2023-04-01"
+    },
+    {
+        "thumb_image": "images/Portraits/portrait_of_kelly.jpg",
+        "full_image": "images/Full-Gallery/portrait_of_kelly.jpg",
+        "alt_text": "portrait_of_kelly",
+        "title": "Portrait of Kelly",
+        "artist": "J. Grant Merrill",
+        "medium": "Oil",
+        "width": "16.0",
+        "height": "20.0",
+        "date_created": "2024-03-01"
+    },
+    {
+        "thumb_image": "images/Portraits/sarah.jpg",
+        "full_image": "images/Full-Gallery/sarah.jpg",
+        "alt_text": "sarah",
+        "title": "Sarah",
+        "artist": "J. Grant Merrill",
+        "medium": "Pastel",
+        "width": "",
+        "height": "",
+        "date_created": "2023-07-01"
+    },
+    {
+        "thumb_image": "images/Portraits/self_portrait.jpg",
+        "full_image": "images/Full-Gallery/self_portrait.jpg",
+        "alt_text": "self_portrait",
+        "title": "Self Portrait",
+        "artist": "J. Grant Merrill",
+        "medium": "Oil",
+        "width": "16.0",
+        "height": "20.0",
+        "date_created": "2024-04-01"
+    },
+    {
+        "thumb_image": "images/Portraits/the_banjo_player.jpg",
+        "full_image": "images/Full-Gallery/the_banjo_player.jpg",
+        "alt_text": "the_banjo_player",
+        "title": "The Banjo Player",
+        "artist": "J. Grant Merrill",
+        "medium": "Oil",
+        "width": "11.0",
+        "height": "14.0",
+        "date_created": "2025-06-01"
+    }
+];
