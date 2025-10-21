@@ -1,0 +1,2 @@
+const portrait_images = [
+];
