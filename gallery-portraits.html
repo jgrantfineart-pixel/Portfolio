@@ -1,0 +1,327 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Portrait Gallery — Commissioned & Original Art by J. Grant Fine Art</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    
+    <meta name="description" content="View the portrait gallery by J. Grant Merrill, including oil and pastel commissions. Contact me to learn about commissioning your own custom portrait." />
+    <meta name="keywords" content="portrait art, portrait gallery, portrait commission, oil portrait, pastel portrait, figurative art, custom art" />
+    
+    <link rel="canonical" href="https://[YOURDOMAIN.COM]/portrait.html" /> 
+
+    <meta property="og:title" content="Portrait Gallery — J. Grant Fine Art Commissions" />
+    <meta property="og:description" content="View the collection of commissioned portraits and inquire about commissioning your own artwork." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://[YOURDOMAIN.COM]/portrait.html" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        /* --- Gallery-Specific Styles --- */
+        
+        /* Grid Layout for the Gallery */
+        #gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 2rem 0;
+        }
+
+        /* Styling for individual gallery items */
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer; 
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Intro styling */
+        #intro .content { 
+            max-width:960px; 
+            margin:0; 
+            padding:1rem 0 0.5rem 0; 
+            text-align:left; 
+        }
+        #intro h1 { margin:0 0 .25rem 0; font-size:2rem; }
+
+        /* Modal styles */
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: auto;
+        }
+        #modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            text-align: left;
+            color: #fff;
+            position: relative;
+        }
+        #modal img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+        #modal-details {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+        }
+        /* Style for the commission prompt */
+        #modal-details .modal-commission-prompt {
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.8;
+        }
+
+        #modal-close, #modal-prev, #modal-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.3);
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1.25rem;
+            color: #000;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        #modal-close {
+            top: 1rem;
+            right: 1rem;
+            transform: none;
+        }
+        /* Navigation buttons visible */
+        #modal-prev { left: -2rem; display: block; }
+        #modal-next { right: -2rem; display: block; }
+        
+        /* ✅ NEW: Style for the link back to the main gallery */
+        .back-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid rgba(150, 150, 150, 0.4);
+            border-radius: 4px;
+            transition: opacity 0.2s, background-color 0.2s;
+        }
+        .back-link:hover {
+            opacity: 1;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="is-preload">
+
+<div id="wrapper">
+
+    <div id="main">
+        <div class="inner">
+
+            <header id="header">
+                <a href="index.html" class="logo"><strong>J. Grant</strong> Fine Art</a>
+                <ul class="icons">
+                    <li>
+                        <a href="https://www.instagram.com/jgrant_fineart" class="icon brands fa-instagram" target="_blank">
+                            <span class="label">Instagram</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:jgrantfineart@gmail.com" class="icon solid fa-envelope">
+                            <span class="label">Email</span>
+                        </a>
+                    </li>
+                </ul>
+            </header>
+
+            <section id="intro">
+                <div class="content">
+                    <h1>Portrait Gallery</h1>
+                    <p>Explore the commissioned and personal portraits in my collection below. Click any image for full details and commissioning information.</p>
+                    
+                    <a href="gallery.html" class="back-link">
+                        &larr; Back to Full Gallery
+                    </a>
+                </div>
+            </section>
+
+            <section id="gallery" aria-label="Portrait artwork grid"></section>
+
+        </div>
+    </div>
+
+    <div id="sidebar">
+        <div class="inner">
+            <nav id="menu">
+                <header class="major"><h2>Menu</h2></header>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="https://jgrantfineart.square.site/shop/original-art/HX7HKUXSE4ZA47RJKRRKUZX6" target="_blank">Shop</a></li>
+                    <li><a href="https://jgrantfineart.substack.com/?utm_campaign=profile_chips" target="_blank">Newsletter</a></li>
+                </ul>
+            </nav>
+
+            <section>
+                <header class="major"><h2>Get in touch</h2></header>
+                <p>Email me for commissions or inquiries.</p>
+                <ul class="contact">
+                    <li class="icon solid fa-envelope"><a href="mailto:jgrantfineart@gmail.com">jgrantfineart@gmail.com</a></li>
+                </ul>
+            </section>
+
+            <footer id="footer">
+                <p class="copyright">&copy; J. Grant Fine Art. All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+            </footer>
+        </div>
+    </div>
+</div>
+
+<div id="modal" class="flex">
+    <div id="modal-content">
+        <button id="modal-close">×</button>
+        <button id="modal-prev">&#8592;</button> 
+        <button id="modal-next">&#8594;</button> 
+        <img id="modal-img" src="" alt="">
+        <div id="modal-details"></div>
+    </div>
+</div>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script src="images/Portraits/portrait_images.js"></script>
+
+<script>
+// The 'portraitImages' array must now contain structured objects 
+const images = typeof portraitImages !== 'undefined' ? portraitImages : [];
+
+const gallery = document.getElementById("gallery");
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modal-img");
+const modalDetails = document.getElementById("modal-details");
+const modalClose = document.getElementById("modal-close");
+const modalPrev = document.getElementById("modal-prev");
+const modalNext = document.getElementById("modal-next");
+
+let currentIndex = 0;
+
+// --- Modal Functions ---
+
+function openModal(index){
+    currentIndex = index;
+    updateModalContent();
+    modal.style.display = "flex";
+}
+
+function closeModal(){
+    modal.style.display = "none";
+}
+
+function updateModalContent(){
+    const img = images[currentIndex];
+    if(!img) return;
+
+    modalImg.src = img.full_image || img.thumb_image; 
+    modalImg.alt = img.alt_text || img.title || `Portrait by ${img.artist}`;
+
+    // Get the year completed from date_created
+    let year = "N/A";
+    if (img.date_created) {
+        year = img.date_created.toString().substring(0, 4); 
+    }
+
+    // Build the modal content
+    modalDetails.innerHTML = `
+        <p><strong>Title:</strong> ${img.title || "Untitled"}</p>
+        <p><strong>Medium:</strong> ${img.medium || "N/A"}</p>
+        <p><strong>Size:</strong> ${img.width || "?"} × ${img.height || "?"} in</p>
+        <p><strong>Completed:</strong> ${year}</p>
+        
+        <p class="modal-commission-prompt">
+            Interested in your own custom artwork? <a href="contact.html">Contact me</a> to learn more about portrait commissions.
+        </p>
+    `;
+}
+
+// Navigation functions
+function prevImage(){
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateModalContent();
+}
+
+function nextImage(){
+    currentIndex = (currentIndex + 1) % images.length;
+    updateModalContent();
+}
+
+
+// --- Render Gallery ---
+
+function renderGallery() {
+    gallery.innerHTML = "";
+    
+    if (Array.isArray(images) && images.length > 0) {
+        images.forEach((img, index) => { 
+            const item = document.createElement("div");
+            item.className = "gallery-item";
+            
+            const altText = img.alt_text || img.title || `Portrait by ${img.artist}`;
+            
+            item.innerHTML = `
+                <img src="${img.thumb_image}" alt="${altText}" loading="lazy" />
+            `;
+
+            // Open the modal on click
+            item.addEventListener("click", () => openModal(index));
+            
+            gallery.appendChild(item);
+        });
+    } else {
+        gallery.innerHTML = '<p>No portrait images found to display in the gallery or the image list file is missing.</p>';
+    }
+}
+
+
+// --- Event listeners ---
+modalClose.addEventListener("click", closeModal);
+modalPrev.addEventListener("click", prevImage);
+modalNext.addEventListener("click", nextImage);
+
+modal.addEventListener("click", (e)=>{
+    if(e.target === modal) closeModal();
+});
+
+// --- Initial render ---
+renderGallery();
+</script>
+
+</body>
+</html>

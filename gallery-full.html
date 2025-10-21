@@ -1,0 +1,367 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Full Gallery of Original Art by J. Grant Merrill — Oil, Pastel, Landscape, Portrait</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    <meta name="description" content="Explore the full collection of original fine art by J. Grant Merrill, featuring available oil paintings, landscape art, portraits, and more." />
+    <meta name="keywords" content="original art, oil paintings, landscape art, portraits, available art, J. Grant Merrill, full gallery, fine art" />
+    
+    <link rel="canonical" href="https://[YOURDOMAIN.COM]/gallery.html" /> 
+
+    <meta property="og:title" content="Full Gallery of Original Art — J. Grant Fine Art" />
+    <meta property="og:description" content="Explore the complete collection of available and archived original fine art by J. Grant Merrill." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://[YOURDOMAIN.COM]/gallery.html" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        /* --- Compact Intro and Filters --- */
+        #intro {
+            padding: 0.25rem 0 0.25rem 0 !important;
+            margin-bottom: 0.25rem !important;
+        }
+        #intro .content {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        #intro h1 {
+            margin: 0 0 0.1rem 0 !important;
+            font-size: 2rem;
+        }
+        #intro p {
+            margin: 0 0 0.2rem 0 !important;
+            font-size: 1rem;
+        }
+
+        /* Filters styling */
+        #filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-bottom: 0.25rem !important;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+        #filters label {
+            margin: 0 0.2rem 0 0 !important;
+        }
+        #filters select {
+            padding: 0.15rem 0.25rem;
+            font-size: 0.95rem;
+            margin: 0 !important;
+        }
+
+        /* Gallery grid */
+        #gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding-top: 0 !important;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            max-height: 450px;
+            object-fit: contain;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Modal styles */
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: auto;
+        }
+        #modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            text-align: left;
+            color: #fff;
+            position: relative;
+        }
+        #modal img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+        #modal-details {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+        }
+        /* NEW: Style for the contact prompt */
+        #modal-details .modal-contact-prompt {
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-top: 0.25rem;
+            opacity: 0.8;
+        }
+        /* END NEW STYLE */
+
+        #modal-close, #modal-prev, #modal-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.3);
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1.25rem;
+            color: #000;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        #modal-close {
+            top: 1rem;
+            right: 1rem;
+            transform: none;
+        }
+        #modal-prev { left: -2rem; }
+        #modal-next { right: -2rem; }
+    </style>
+</head>
+<body class="is-preload">
+
+<div id="wrapper">
+    <div id="main">
+        <div class="inner">
+
+            <header id="header">
+                <a href="index.html" class="logo"><strong>J. Grant</strong> Fine Art</a>
+                <ul class="icons">
+                    <li><a href="https://www.instagram.com/jgrant_fineart" class="icon brands fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+                    <li><a href="mailto:jgrantfineart@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+                </ul>
+            </header>
+
+            <section id="intro">
+                <div class="content content-left">
+                    <h1>Full Gallery</h1>
+                    <p>Explore my complete collection below. Use the filters to sort by type, collection, or availability.</p>
+
+                    <div id="filters">
+                        <label for="typeFilter">Type:</label>
+                        <select id="typeFilter"><option value="all">All</option></select>
+
+                        <label for="collectionFilter">Collection:</label>
+                        <select id="collectionFilter"><option value="all">All</option></select>
+
+                        <label for="statusFilter">Availability:</label>
+                        <select id="statusFilter">
+                            <option value="all">All</option>
+                            <option value="available">Available</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <section id="gallery" aria-label="Full artwork grid"></section>
+
+        </div>
+    </div>
+
+    <div id="sidebar">
+        <div class="inner">
+            <nav id="menu">
+                <header class="major"><h2>Menu</h2></header>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="https://jgrantfineart.square.site/shop/original-art/HX7HKUXSE4ZA47RJKRRKUZX6" target="_blank">Shop</a></li>
+                    <li><a href="https://jgrantfineart.substack.com/?utm_campaign=profile_chips" target="_blank">Newsletter</a></li>
+                </ul>
+            </nav>
+
+            <section>
+                <header class="major"><h2>Get in touch</h2></header>
+                <p>Email me for commissions or inquiries.</p>
+                <ul class="contact">
+                    <li class="icon solid fa-envelope"><a href="mailto:jgrantfineart@gmail.com">jgrantfineart@gmail.com</a></li>
+                </ul>
+            </section>
+
+            <footer id="footer">
+                <p class="copyright">&copy; J. Grant Fine Art. All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+            </footer>
+        </div>
+    </div>
+</div>
+
+<div id="modal" class="flex">
+    <div id="modal-content">
+        <button id="modal-close">×</button>
+        <button id="modal-prev">&#8592;</button>
+        <button id="modal-next">&#8594;</button>
+        <img id="modal-img" src="" alt="">
+        <div id="modal-details"></div>
+    </div>
+</div>
+
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script src="images/Full-Gallery/full_gallery.js"></script>
+<script>
+const images = typeof fullGalleryImages !== 'undefined' ? fullGalleryImages : [];
+let filteredImages = images.slice();
+
+// --- Populate filter dropdowns ---
+const types = new Set();
+const collections = new Set();
+
+images.forEach(img => {
+    if(img.type) types.add(img.type);
+    if(img.collections) collections.add(img.collections);
+});
+
+const typeFilter = document.getElementById("typeFilter");
+const collectionFilter = document.getElementById("collectionFilter");
+const statusFilter = document.getElementById("statusFilter");
+
+Array.from(types).sort().forEach(t => { const opt = document.createElement("option"); opt.value = t; opt.textContent = t; typeFilter.appendChild(opt); });
+Array.from(collections).sort().forEach(c => { const opt = document.createElement("option"); opt.value = c; opt.textContent = c; collectionFilter.appendChild(opt); });
+
+// --- Render gallery ---
+function renderGallery() {
+    const gallery = document.getElementById("gallery");
+    gallery.innerHTML = "";
+    filteredImages.forEach((img, index) => {
+        const item = document.createElement("div");
+        item.className = "gallery-item";
+        
+        // SEO Update: Use the generated alt_text for the thumbnail
+        const altText = img.alt_text || img.title || `Artwork by ${img.artist}`;
+        
+        item.innerHTML = `<img src="${img.thumb_image}" alt="${altText}">`;
+        item.addEventListener("click", () => openModal(index));
+        gallery.appendChild(item);
+    });
+}
+
+// --- Apply filters ---
+function applyFilters() {
+    filteredImages = images.slice();
+    const typeVal = typeFilter.value;
+    const collectionVal = collectionFilter.value;
+    const statusVal = statusFilter.value;
+
+    filteredImages = filteredImages.filter(img => {
+        const isAvailable = img.status && img.status.toLowerCase() === "available";
+        return (typeVal==="all"||img.type==typeVal)
+            && (collectionVal==="all"||img.collections==collectionVal)
+            && (statusVal==="all"|| (statusVal==="available"?isAvailable:true) );
+    });
+
+    // Sort by date_created descending
+    filteredImages.sort((a,b) => new Date(b.date_created) - new Date(a.date_created));
+
+    renderGallery();
+}
+
+// --- Modal logic ---
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modal-img");
+const modalDetails = document.getElementById("modal-details");
+const modalClose = document.getElementById("modal-close");
+const modalPrev = document.getElementById("modal-prev");
+const modalNext = document.getElementById("modal-next");
+let currentIndex = 0;
+
+function openModal(index){
+    currentIndex = index;
+    updateModalImage();
+    modal.style.display = "flex";
+}
+
+function closeModal(){
+    modal.style.display = "none";
+}
+
+function updateModalImage(){
+    const img = filteredImages[currentIndex];
+    if(!img) return;
+    modalImg.src = img.full_image;
+    
+    // SEO Update: Use the generated alt_text for the full-size image in the modal
+    modalImg.alt = img.alt_text || img.title || `Artwork by ${img.artist}`;
+
+    // 🌟 UPDATED STATUS LOGIC 🌟
+    let statusLine = "";
+    let contactLine = "";
+    const isAvailable = img.status && img.status.toLowerCase() === "available";
+
+    if (isAvailable) {
+        if (img.price && !isNaN(parseFloat(img.price))) {
+            // Price is a valid number, display it as "Available, $700"
+            statusLine = `Available, $${parseInt(img.price)}`;
+        } else {
+            // Price is missing, display as "Available, Contact for Pricing"
+            statusLine = "Available, Contact for Pricing";
+        }
+        // Add the contact line for available items
+        contactLine = `<p class="modal-contact-prompt">Contact me for more information or to purchase.</p>`;
+    } else {
+        // Not available (e.g., Sold, Gifted, Private Collection)
+        statusLine = img.status ? img.status : "N/A";
+    }
+    // 🌟 END UPDATED STATUS LOGIC 🌟
+
+    modalDetails.innerHTML = `
+        <p><strong>Title:</strong> ${img.title || "Untitled"}</p>
+        <p><strong>Size:</strong> ${img.width || "?"} × ${img.height || "?"} in</p>
+        <p><strong>Status:</strong> ${statusLine}</p>
+        ${contactLine}
+    `;
+}
+
+function prevImage(){
+    currentIndex = (currentIndex - 1 + filteredImages.length) % filteredImages.length;
+    updateModalImage();
+}
+
+function nextImage(){
+    currentIndex = (currentIndex + 1) % filteredImages.length;
+    updateModalImage();
+}
+
+// --- Event listeners ---
+modalClose.addEventListener("click", closeModal);
+modalPrev.addEventListener("click", prevImage);
+modalNext.addEventListener("click", nextImage);
+modal.addEventListener("click", (e)=>{
+    if(e.target === modal) closeModal();
+});
+
+[typeFilter, collectionFilter, statusFilter].forEach(sel => sel.addEventListener("change", applyFilters));
+
+// --- Initial render ---
+applyFilters();
+</script>
+
+</body>
+</html>
