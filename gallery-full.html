@@ -16,7 +16,7 @@
     <meta property="og:url" content="https://[YOURDOMAIN.COM]/gallery.html" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <style>
-        /* --- Compact Intro and Filters --- */
+        /* --- Compact Intro and Filters (No Change) --- */
         #intro {
             padding: 0.25rem 0 0.25rem 0 !important;
             margin-bottom: 0.25rem !important;
@@ -34,7 +34,7 @@
             font-size: 1rem;
         }
 
-        /* Filters styling */
+        /* Filters styling (No Change) */
         #filters {
             display: flex;
             flex-wrap: wrap;
@@ -52,15 +52,31 @@
             margin: 0 !important;
         }
 
-        /* Gallery grid */
+        /*
+        =====================================================
+        ✅ FIX: Masonry Column Layout for Gallery Grid
+        =====================================================
+        */
         #gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding-top: 0 !important;
+            /* Changed from display: grid to column layout */
+            display: block;
+            margin-top: 2rem;
+            padding: 2rem 0;
+            
+            /* Define 3 columns for desktop */
+            column-count: 3;
+            column-gap: 20px;
         }
+        
+        @media screen and (max-width: 1200px) { #gallery { column-count: 2; } }
+        @media screen and (max-width: 736px) { #gallery { column-count: 1; column-gap: 0; } }
 
         .gallery-item {
+            /* Crucial: allows item to break columns */
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 20px; 
+            
             overflow: hidden;
             border-radius: 6px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -68,19 +84,24 @@
             cursor: pointer;
         }
         .gallery-item:hover {
-            transform: translateY(-5px);
+            transform: scale(1.02); /* Scale instead of translate for masonry */
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
         .gallery-item img {
             width: 100%;
-            height: auto;
-            max-height: 450px;
-            object-fit: contain;
+            height: auto; /* Removed max-height */
+            /* Removed object-fit: contain */
             display: block;
+            border-radius: 6px; 
             transition: opacity 0.3s ease;
         }
+        /*
+        =====================================================
+        END FIX
+        =====================================================
+        */
 
-        /* Modal styles */
+        /* Modal styles (No Change) */
         #modal {
             display: none;
             position: fixed;
@@ -109,14 +130,13 @@
             margin-top: 0.5rem;
             font-size: 1rem;
         }
-        /* NEW: Style for the contact prompt */
+        /* Style for the contact prompt */
         #modal-details .modal-contact-prompt {
             font-size: 0.9rem;
             font-style: italic;
             margin-top: 0.25rem;
             opacity: 0.8;
         }
-        /* END NEW STYLE */
 
         #modal-close, #modal-prev, #modal-next {
             position: absolute;
@@ -236,7 +256,10 @@ const collections = new Set();
 
 images.forEach(img => {
     if(img.type) types.add(img.type);
-    if(img.collections) collections.add(img.collections);
+    if(img.collections) {
+        // Handle comma-separated collections
+        img.collections.split(',').map(c => c.trim()).filter(c => c).forEach(c => collections.add(c));
+    }
 });
 
 const typeFilter = document.getElementById("typeFilter");
@@ -250,6 +273,10 @@ Array.from(collections).sort().forEach(c => { const opt = document.createElement
 function renderGallery() {
     const gallery = document.getElementById("gallery");
     gallery.innerHTML = "";
+    if (filteredImages.length === 0) {
+        gallery.innerHTML = '<p>No artwork found matching the current filters.</p>';
+        return;
+    }
     filteredImages.forEach((img, index) => {
         const item = document.createElement("div");
         item.className = "gallery-item";
@@ -257,7 +284,7 @@ function renderGallery() {
         // SEO Update: Use the generated alt_text for the thumbnail
         const altText = img.alt_text || img.title || `Artwork by ${img.artist}`;
         
-        item.innerHTML = `<img src="${img.thumb_image}" alt="${altText}">`;
+        item.innerHTML = `<img src="${img.thumb_image}" alt="${altText}" loading="lazy">`;
         item.addEventListener("click", () => openModal(index));
         gallery.appendChild(item);
     });
@@ -272,9 +299,11 @@ function applyFilters() {
 
     filteredImages = filteredImages.filter(img => {
         const isAvailable = img.status && img.status.toLowerCase() === "available";
-        return (typeVal==="all"||img.type==typeVal)
-            && (collectionVal==="all"||img.collections==collectionVal)
-            && (statusVal==="all"|| (statusVal==="available"?isAvailable:true) );
+        const matchesType = (typeVal==="all" || img.type===typeVal);
+        const matchesCollection = (collectionVal==="all" || (img.collections && img.collections.split(',').map(c => c.trim()).includes(collectionVal)));
+        const matchesStatus = (statusVal==="all" || (statusVal==="available" ? isAvailable : true) );
+        
+        return matchesType && matchesCollection && matchesStatus;
     });
 
     // Sort by date_created descending
@@ -305,6 +334,8 @@ function closeModal(){
 function updateModalImage(){
     const img = filteredImages[currentIndex];
     if(!img) return;
+    
+    // Use full_image path
     modalImg.src = img.full_image;
     
     // SEO Update: Use the generated alt_text for the full-size image in the modal
@@ -316,11 +347,11 @@ function updateModalImage(){
     const isAvailable = img.status && img.status.toLowerCase() === "available";
 
     if (isAvailable) {
-        if (img.price && !isNaN(parseFloat(img.price))) {
+        if (img.price && !isNaN(parseFloat(img.price)) && parseFloat(img.price) > 0) {
             // Price is a valid number, display it as "Available, $700"
             statusLine = `Available, $${parseInt(img.price)}`;
         } else {
-            // Price is missing, display as "Available, Contact for Pricing"
+            // Price is missing or zero, display as "Available, Contact for Pricing"
             statusLine = "Available, Contact for Pricing";
         }
         // Add the contact line for available items
@@ -328,12 +359,18 @@ function updateModalImage(){
     } else {
         // Not available (e.g., Sold, Gifted, Private Collection)
         statusLine = img.status ? img.status : "N/A";
+        contactLine = `<p class="modal-contact-prompt">This piece is ${statusLine.toLowerCase()}. Please <a href="contact.html">contact me</a> for commissions or other inquiries.</p>`;
     }
     // 🌟 END UPDATED STATUS LOGIC 🌟
 
+    // Get the year completed from date_created
+    let year = img.date_created ? img.date_created.toString().substring(0,4) : "N/A";
+
     modalDetails.innerHTML = `
         <p><strong>Title:</strong> ${img.title || "Untitled"}</p>
+        <p><strong>Medium:</strong> ${img.medium || "N/A"}</p>
         <p><strong>Size:</strong> ${img.width || "?"} × ${img.height || "?"} in</p>
+        <p><strong>Completed:</strong> ${year}</p>
         <p><strong>Status:</strong> ${statusLine}</p>
         ${contactLine}
     `;

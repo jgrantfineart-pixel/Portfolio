@@ -1,21 +1,36 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>J. Grant Merrill: Artist Curriculum Vitae (CV) | Kansas City Fine Artist</title>
+    <title>Gallery — J. Grant Fine Art</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
-    <meta name="description" content="View the official Curriculum Vitae (CV) for J. Grant Merrill, a Kansas City-based fine artist, including a list of exhibitions, honors, and professional experience." />
-    <meta name="keywords" content="J. Grant Merrill CV, artist curriculum vitae, Kansas City artist exhibitions, fine art professional experience" />
-    
-    <link rel="canonical" href="https://[YOURDOMAIN.COM]/cv.html" /> 
-
-    <meta property="og:title" content="J. Grant Merrill: Artist Curriculum Vitae (CV)" />
-    <meta property="og:description" content="View the list of exhibitions and professional honors for J. Grant Merrill, Kansas City Fine Artist." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://[YOURDOMAIN.COM]/cv.html" />
-
-    <link rel="stylesheet" href="assets/css/main.css" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        /* Thumbnail images styling */
+        .gallery-thumbs {
+            display: flex;
+            flex-direction: column; /* stacked vertically */
+            gap: 2rem; /* space between thumbnails */
+            margin-top: 1rem;
+        }
+        .gallery-thumb {
+            display: flex;
+            align-items: flex-start; /* align top of image with text */
+            gap: 1rem;
+        }
+        .gallery-thumb img {
+            width: 300px;       /* all images same width */
+            height: auto;       /* preserves original aspect ratio */
+            border-radius: 6px;
+            display: block;
+            object-fit: contain; /* ensures no cropping if container changes */
+        }
+        .gallery-thumb p {
+            margin: 0;
+            font-size: 1.05rem;
+            line-height: 1.2;
+        }
+    </style>
 </head>
 <body class="is-preload">
 
@@ -24,6 +39,7 @@
     <div id="main">
         <div class="inner">
 
+            <!-- Header -->
             <header id="header">
                 <a href="index.html" class="logo"><strong>J. Grant</strong> Fine Art</a>
                 <ul class="icons">
@@ -32,38 +48,47 @@
                 </ul>
             </header>
 
+            <!-- Gallery Section -->
             <section style="padding:1rem 0 0.5rem 0;">
-                <div class="content" style="text-align:left; max-width:960px; margin:0; padding:0 1rem;">
+                <div class="content content-left">
                     <header class="major">
-                        <h2>Curriculum Vitae (CV)</h2>
+                        <h2>Gallery</h2>
                     </header>
+                    <p style="margin:0 0 0.75rem 0; font-size:1.05rem;">
+                        Click a gallery below to view additional images.
+                    </p>
 
-                    <h3>Exhibitions</h3>
-                    <ul>
-                        <li>Visions of the Flint Hills at Buttonwood Art Space — Oct-Dec 2025</li>
-                        <li>2025 MAPS National Show - Adventures in Pastel — 2025</li>
-                        <li>Start the Conversation: A Community Art Exhibition — May 2025</li>
-                        <li>21st Annual Images Art Gallery Juried Art Show — 2025</li>
-                        <li>Small Works exhibition at 80 Sante Fe Art Gallery — Nov 2024</li>
-                        <li>It’s the Small Things at InterUrban Arthouse — Aug 2024</li>
-                        <li>Passport Show at 80 Sante Fe Art Gallery — Jul 2024</li>
-                        <li>Art in the Park Exhibitor — 2024</li>
-                        <li>Art in the Park Exhibitor — 2023</li>
-                    </ul>
+<div class="gallery-thumbs">
+    <div class="gallery-thumb">
+        <a href="gallery-recent.html">
+            <img src="images/Thumbs/20251017092814_PXL_20250918_185319069.RAW-01.MP_2_llxfqc.jpg" alt="Recent Work Thumbnail" />
+            <p>Recent Work</p>
+        </a>
+    </div>
 
-                    <h3>Professional Experience / Honors</h3>
-                    <ul>
-                        <li>Juror, Midamerica Pastel Society Portrait Competition — June 2024</li>
-                    </ul>
+    <div class="gallery-thumb">
+        <a href="gallery-portraits.html">
+            <img src="images/Thumbs/20251017092935-sarah-xoxjwx.jpg" alt="Portrait Gallery Thumbnail" />
+            <p>Portrait Gallery</p>
+        </a>
+    </div>
+
+    <div class="gallery-thumb">
+        <a href="gallery-full.html">
+            <img src="images/Thumbs/20251017092825-44-ba24yj.jpg" alt="Full Gallery Thumbnail" />
+            <p>Full Gallery</p>
+        </a>
+    </div>
+</div>
                 </div>
             </section>
 
         </div>
     </div>
 
+    <!-- Sidebar -->
     <div id="sidebar">
         <div class="inner">
-
             <nav id="menu">
                 <header class="major"><h2>Menu</h2></header>
                 <ul>
@@ -88,7 +113,6 @@
             <footer id="footer">
                 <p class="copyright">&copy; J. Grant Fine Art. All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
             </footer>
-
         </div>
     </div>
 

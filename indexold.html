@@ -11,40 +11,19 @@
     <link rel="canonical" href="https://[YOURDOMAIN.COM]/index.html" /> 
 
     <meta property="og:title" content="J. Grant Fine Art | Classical Landscape & Portrait Artist" />
-    <meta property="og:description" content="Welcome to the portfolio of J. Grant Merrill, a Kansas City-based fine artist. Explore classical oil landscapes and portraiture." />
+    <meta property="og:description" content="Explore the newest original artworks recently completed and added to the collection." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://[YOURDOMAIN.COM]/index.html" />
     <link rel="stylesheet" href="assets/css/main.css" />
     
     <style>
-        /* --- Header Title Fix (from previous step) --- */
+        /* --- Header Title Fix (No Change) --- */
         header.major h1 {
-            text-transform: none !important; /* normal capitalization */
-            font-size: 2.2em;      
+            text-transform: none; /* normal capitalization */
+            font-size: 2.2em;     /* slightly smaller */
             line-height: 1.2;
             margin-bottom: 0.5em;
         }
-
-        /* =====================================================
-        ✅ FIX: Paragraph Styling to remove all-caps
-        =====================================================
-        */
-        header.major p {
-            text-transform: none !important; /* Forces normal capitalization for body text */
-            line-height: 1.6; /* Improves readability (from older version) */
-            font-size: 1em; /* Consolidates inline styles */
-            color: #777; /* Consolidates inline styles */
-        }
-
-        /* Add spacing after the second paragraph (from older version) */
-        header.major p:nth-of-type(2) {
-            margin-bottom: 1em !important; 
-        }
-        /*
-        =====================================================
-        END FIX
-        =====================================================
-        */
 
         /* --- Gallery Styles (No Change) --- */
         #recent-gallery {
@@ -164,12 +143,12 @@
                     
                     <br> 
                     
-                    <p>
+                    <p style="font-size: 1em; color: #777;">
                         Welcome! I'm J. Grant Merrill, a Kansas City-based artist specializing in classical landscapes and portraiture. 
                         My artistic exploration is a continuous process. Fueled by a lifelong fascination with tools and the human capacity to create, I'm constantly learning and experimenting with new techniques and ideas. I love exploring modern subjects using traditional techniques to create work that is both contemporary and timeless and to explore the beauty that surrounds us.
                     </p>
                     
-                    <p>
+                    <p style="font-size: 1em; color: #777;">
                         Head over to my gallery to see some of my recent work and to learn more about my portrait commissioning process. If you would like to keep up with my latest work and the things that inspire me, please consider subscribing to my newsletter. 
                     </p>
                 </header>
@@ -227,7 +206,7 @@
 <script src="images/Recent-Work/recent_work.js"></script>
 
 <script>
-// Using the correct array name 'recentWork'
+// ✅ FIX: Changed 'recentImages' to 'recentWork' to match your data file.
 const images = typeof recentWork !== 'undefined' ? recentWork : [];
 
 const gallery = document.getElementById("recent-gallery");
@@ -245,6 +224,7 @@ function closeModal(){ modal.style.display = "none"; }
 function updateModalContent(){
     const img = images[currentIndex]; if(!img) return;
     
+    // ✅ Updated path logic to use || for better fallback, matching the fixed recent.html
     modalImg.src = img.full_image || img.thumb_image; 
     modalImg.alt = img.alt_text || img.title || `Recent artwork by ${img.artist || "J. Grant Merrill"}`;
     
@@ -281,6 +261,7 @@ function renderGallery() {
             item.className="gallery-item";
             const altText = img.alt_text || img.title || `Recent artwork by ${img.artist || "J. Grant Merrill"}`;
             
+            // ✅ Updated path logic to use || for better fallback, matching the fixed recent.html
             const imageSrc = img.thumb_image || img.full_image || ""; 
             
             item.innerHTML=`<img src="${imageSrc}" alt="${altText}" loading="lazy" />`;
