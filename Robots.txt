@@ -1,0 +1,52 @@
+#
+# 1. SEO OPTIMIZATION: Allow all major, reputable search engines (Google, Bing)
+#    to crawl the entire site for best search performance.
+#    *IMPORTANT: DO NOT DISALLOW Googlebot or Bingbot from crawling your main content.*
+#
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Directives for other major search engine crawlers, if desired
+User-agent: Slurp # Yahoo/DuckDuckGo
+Allow: /
+
+User-agent: Applebot # Apple Search/Siri
+Allow: /
+
+#
+# 2. STANDARD SEO BEST PRACTICE: Disallow low-value/private directories from ALL bots (*).
+#    This saves crawl budget and keeps irrelevant pages out of search results.
+#
+User-agent: *
+Disallow: /wp-admin/       # Example admin/login pages
+Disallow: /search/         # Example internal search results
+Disallow: /cart/           # Example shopping cart/checkout pages
+Disallow: /tmp/            # Example temporary files
+Disallow: /*?sort=* # Example parameter-based duplicate content (use wildcards to block patterns)
+
+#
+# 3. AI SCRAPING PREVENTION: Block known AI model training and large-scale data scrapers.
+#    These are the bots that scrape content specifically for model training,
+#    which generally does not benefit your SEO or referral traffic.
+#
+User-agent: GPTBot              # OpenAI's primary training bot
+Disallow: /
+
+
+User-agent: CCBot               # Common Crawl (one of the largest public datasets for AI training)
+Disallow: /
+
+User-agent: ClaudeBot           # Anthropic's training bot
+Disallow: /
+
+User-agent: cohere-ai           # Cohere's bot
+Disallow: /
+
+#
+# 4. XML SITEMAP: Inform search engines of your sitemap location.
+#    (Replace "yourwebsite.com" with your actual domain.)
+#
+Sitemap: https://www.jgrantfineart.com/sitemap.xml
